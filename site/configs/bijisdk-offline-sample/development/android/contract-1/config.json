@@ -4,15 +4,15 @@
   "environment": "development",
   "platform": "android",
   "configContractVersion": 1,
-  "revision": "pages-android-rollback-91fef65280734582ac0b5fc91f724b92",
-  "publishedAt": "2026-10-29T11:39:17.4079931Z",
+  "revision": "pages-android-physical-update-0877d892a9454728841fec2cfd9d811c",
+  "publishedAt": "2026-10-29T12:24:24.463148Z",
   "compatibility": {
     "minAppBuild": 120,
     "maxAppBuild": 120
   },
   "values": {
     "energy": {
-      "maximum": 100,
+      "maximum": 125,
       "refillSeconds": 120
     }
   }
