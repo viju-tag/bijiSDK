@@ -1,0 +1,73 @@
+{
+  "description": "Shared declarative acceptance cases. Not an executable test suite.",
+  "requestContext": {
+    "projectId": "example-game",
+    "environment": "production",
+    "platform": "android",
+    "appBuild": 120,
+    "configContractVersion": 1,
+    "schemaVersion": 1
+  },
+  "defaults": "../examples/defaults.json",
+  "cases": [
+    {
+      "id": "valid",
+      "file": "../examples/valid-config.json",
+      "envelopeValid": true,
+      "featureValuesValid": true,
+      "contextCompatible": true,
+      "expected": "PendingUpdate"
+    },
+    {
+      "id": "missing-key",
+      "file": "../examples/missing-key-config.json",
+      "envelopeValid": true,
+      "featureValuesValid": true,
+      "contextCompatible": true,
+      "expected": "PendingUpdate",
+      "assertion": "interstitial resolves to bundled default, not previous remote value"
+    },
+    {
+      "id": "invalid-feature",
+      "file": "../examples/invalid-feature-config.json",
+      "envelopeValid": true,
+      "featureValuesValid": false,
+      "contextCompatible": true,
+      "expected": "RejectWholeUpdate"
+    },
+    {
+      "id": "unsupported-schema",
+      "file": "../examples/unsupported-schema-config.json",
+      "envelopeValid": false,
+      "featureValuesValid": true,
+      "contextCompatible": false,
+      "expected": "RejectWholeUpdate"
+    },
+    {
+      "id": "wrong-context",
+      "file": "../examples/wrong-context-config.json",
+      "envelopeValid": true,
+      "featureValuesValid": true,
+      "contextCompatible": false,
+      "expected": "RejectWholeUpdate"
+    },
+    {
+      "id": "empty-values",
+      "file": "../examples/empty-values-config.json",
+      "envelopeValid": true,
+      "featureValuesValid": true,
+      "contextCompatible": true,
+      "expected": "PendingUpdate",
+      "assertion": "all registered values resolve to bundled defaults"
+    },
+    {
+      "id": "rollback",
+      "file": "../examples/rollback-config.json",
+      "envelopeValid": true,
+      "featureValuesValid": true,
+      "contextCompatible": true,
+      "expected": "PendingUpdate",
+      "assertion": "new publication with previous values is valid and still requires activation"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "BijiSDK.Unity",
+  "rootNamespace": "BijiSDK.Unity",
+  "references": [
+    "BijiSDK.Runtime"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": true,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

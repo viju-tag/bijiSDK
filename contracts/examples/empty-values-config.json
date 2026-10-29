@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "projectId": "example-game",
+  "environment": "production",
+  "platform": "android",
+  "configContractVersion": 1,
+  "revision": "release-000045",
+  "publishedAt": "2026-10-29T10:00:00Z",
+  "compatibility": {
+    "minAppBuild": 100,
+    "maxAppBuild": 199
+  },
+  "values": {}
+}

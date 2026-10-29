@@ -1,0 +1,32 @@
+# Generated Unity verification project
+/verification/UnityProject/
+
+# Local verification output and publication data
+/verification/http-runs/
+/verification/unity-storage-data/
+/verification/storage/previous-run/
+/verification/storage/harness/runs/
+*.log
+
+# Build caches
+**/bin/
+**/obj/
+**/__pycache__/
+*.py[cod]
+.vs/
+.idea/
+
+# Local credentials and environment configuration
+.env
+.env.*
+!.env.example
+*.pfx
+*.p12
+*.pem
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local backend publication stores
+/backend/dev-data*/

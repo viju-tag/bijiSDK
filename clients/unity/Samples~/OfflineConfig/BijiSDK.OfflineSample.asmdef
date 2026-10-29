@@ -1,0 +1,13 @@
+{
+  "name": "BijiSDK.OfflineSample",
+  "rootNamespace": "BijiSDK.Samples",
+  "references": [
+    "BijiSDK.Runtime",
+    "BijiSDK.Unity"
+  ],
+  "overrideReferences": true,
+  "precompiledReferences": [
+    "Newtonsoft.Json.dll"
+  ],
+  "autoReferenced": true
+}

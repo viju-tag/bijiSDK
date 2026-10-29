@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "bijiSDK config response v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "projectId",
+    "environment",
+    "platform",
+    "configContractVersion",
+    "revision",
+    "publishedAt",
+    "compatibility",
+    "values"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "environment": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "platform": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "configContractVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "publishedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "compatibility": {
+      "type": "object",
+      "required": [
+        "minAppBuild",
+        "maxAppBuild"
+      ],
+      "properties": {
+        "minAppBuild": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maxAppBuild": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "values": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

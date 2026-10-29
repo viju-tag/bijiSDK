@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Example game feature values (illustration only)",
+  "type": "object",
+  "description": "Missing top-level keys use game defaults. Present registered values must validate. Unknown keys are ignored.",
+  "properties": {
+    "energy": {
+      "type": "object",
+      "required": [
+        "maximum",
+        "refillSeconds"
+      ],
+      "properties": {
+        "maximum": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "refillSeconds": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "interstitial": {
+      "type": "object",
+      "required": [
+        "enabled",
+        "cooldownSeconds"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "cooldownSeconds": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

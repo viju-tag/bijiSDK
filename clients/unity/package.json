@@ -1,0 +1,24 @@
+{
+  "name": "com.biji.sdk",
+  "version": "0.1.0-preview.3",
+  "displayName": "bijiSDK",
+  "description": "Remote configuration SDK with bounded HTTP refresh, conditional caching, typed defaults, explicit activation, and recoverable persistence.",
+  "keywords": [
+    "remote-config",
+    "configuration",
+    "bijisdk"
+  ],
+  "unity": "6000.0",
+  "unityRelease": "68f1",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.2.1",
+    "com.unity.modules.unitywebrequest": "1.0.0"
+  },
+  "samples": [
+    {
+      "description": "Refresh from the local server, stage local JSON, explicitly activate updates, and restore saved values.",
+      "displayName": "Offline Config",
+      "path": "Samples~/OfflineConfig"
+    }
+  ]
+}
