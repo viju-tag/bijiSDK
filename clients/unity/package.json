@@ -1,6 +1,6 @@
 {
   "name": "com.biji.sdk",
-  "version": "0.1.0-preview.3",
+  "version": "0.1.0-preview.4",
   "displayName": "bijiSDK",
   "description": "Remote configuration SDK with bounded HTTP refresh, conditional caching, typed defaults, explicit activation, and recoverable persistence.",
   "keywords": [

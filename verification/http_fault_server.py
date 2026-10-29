@@ -34,6 +34,8 @@ class FaultHandler(BaseHTTPRequestHandler):
             self._respond(200, b" " * 2048)
         elif path == "/invalid-utf8":
             self._respond(200, bytes((0xFF, 0xFE)))
+        elif path == "/malformed":
+            self._respond(200, b'{"values":')
         elif path == "/slow":
             time.sleep(1)
             self._respond(200, b'{"status":"delayed"}')

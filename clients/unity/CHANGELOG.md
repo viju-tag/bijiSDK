@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-preview.4 - 2026-10-29
+
+- Added repeatable Android IL2CPP build, live Pages checks, and lifecycle diagnostics.
+- Recorded 15 passing automatic checks on Nox and a physical Motorola moto g45 5G (Android 15), plus hosted update/rollback and restart checks.
+- Added a malformed HTTP response fault check and updated testing instructions.
+- Established immutable release tags and pinned UPM installation links.
+- SDK runtime and sample source are unchanged from the tested preview.3 APK; this release changes package metadata, documentation, and verification tooling.
+- Real offline/reconnection testing remains skipped. iOS testing is deferred; broader Android coverage remains unverified.
+
 ## 0.1.0-preview.3 - 2026-10-29
 
 - Added sample-only HTTPS GitHub Pages mapping for Editor, Android, and iOS test fixtures.

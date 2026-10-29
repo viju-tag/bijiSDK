@@ -3,9 +3,20 @@
 Standalone remote configuration SDK, starting with a Unity client and a shared
 platform-independent backend contract.
 
-## Current status: HTTP development milestone
+## Install the versioned preview
 
-Version 0.1.0-preview.3 adds HTTP refresh, conditional requests/ETags, bounded retries,
+In Unity Package Manager, choose **Install package from Git URL** and paste:
+
+```text
+https://github.com/viju-tag/bijiSDK.git?path=/clients/unity#v0.1.0-preview.4
+```
+
+Unity resolves the declared Newtonsoft dependency automatically. Git must be available to Unity.
+See [versioning rules](docs/versioning.md).
+
+## Current status: Android-tested preview
+
+Version 0.1.0-preview.4 includes HTTP refresh, conditional requests/ETags, bounded retries,
 timeouts, freshness/cooldown rules, and protection against stale responses. Downloaded
 values still require explicit activation through the validated pending-state pipeline.
 
@@ -15,7 +26,15 @@ local development server as well as staging local JSON.
 
 Target baseline: Unity 6000.0.68f1, Android and iOS. Windows/.NET and live Windows
 Unity Editor HTTP checks passed, including publish/activate/rollback and transport faults.
-Android/iOS builds, device behavior, and IL2CPP remain unverified.
+The ARM64 IL2CPP development APK passed 15 Pages/storage checks in an Android 12 Nox
+emulator and on a physical Motorola moto g45 5G running Android 15. Manual activation,
+background/resume, and saved-state relaunch also passed on the phone. The imported
+sample passed an approved hosted update/rollback sequence, with each download staying
+pending until activation and the final rollback surviving a process restart.
+Offline/reconnection was skipped by the user; iOS execution remains unverified. See the separate
+[emulator results](verification/results-mobile-2026-10-29.md) and
+[physical Android results](verification/results-physical-android-2026-10-29.md) for
+the exact build settings, evidence, and remaining checks.
 
 A Python development server and publication/rollback CLI are included.
 Production hosting is still undecided. Editor override tooling, A/B assignment, and

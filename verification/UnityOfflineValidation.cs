@@ -36,7 +36,7 @@ namespace BijiSDK.OfflineChecks
                     await UnityHttpIntegration.RunAsync();
                     Debug.Log("PASS: Live HTTP publication, ETag, explicit activation, rollback, offline restart");
                     await UnityHttpIntegration.CheckFaultTransportAsync();
-                    Debug.Log("PASS: Unity HTTP byte limit, UTF-8, timeout, cancellation, redirect, throttling");
+                    Debug.Log("PASS: Unity HTTP byte limit, UTF-8, timeout, cancellation, redirect, throttling, malformed JSON");
                 }
             }
             catch (Exception exception)

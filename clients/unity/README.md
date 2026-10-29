@@ -1,6 +1,6 @@
 # bijiSDK Unity package
 
-Version 0.1.0-preview.3 includes the offline core and HTTP refresh integration.
+Version 0.1.0-preview.4 includes the offline core and HTTP refresh integration.
 
 ## Available
 
@@ -16,7 +16,13 @@ Version 0.1.0-preview.3 includes the offline core and HTTP refresh integration.
 
 ## Installation and local server
 
-Use Package Manager > Add package from disk and select this package.json.
+For the versioned release, use Package Manager > Install package from Git URL:
+
+```text
+https://github.com/viju-tag/bijiSDK.git?path=/clients/unity#v0.1.0-preview.4
+```
+
+For local development, use Add package from disk and select this package.json.
 Unity resolves com.unity.nuget.newtonsoft-json 3.2.1.
 Import Offline Config from Samples, then follow its README.
 
@@ -31,8 +37,10 @@ A phone's loopback address refers to the phone, so device access needs a deliber
 LAN/emulator address and appropriate development platform networking settings.
 
 The intended minimum is Unity 6000.0.68f1. Windows Editor compilation, offline behavior,
-and live HTTP integration checks passed. Android/iOS are the targets, with device,
-IL2CPP, and later Unity-version verification still outstanding.
+and live HTTP integration checks passed. The unchanged runtime was tested in an ARM64
+IL2CPP preview.3 APK on Nox and a physical Motorola moto g45 5G (Android 15).
+Real offline/reconnection testing was skipped; iOS testing is deferred. Other devices,
+stripping settings, and later Unity versions remain unverified.
 
 See [Public API](Documentation~/public-api.md) and [Integration](Documentation~/integration.md).
 

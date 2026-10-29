@@ -1,5 +1,7 @@
 # Generated Unity verification project
 /verification/UnityProject/
+/verification/MobileUnityProject/
+/verification/mobile-runs/
 
 # Local verification output and publication data
 /verification/http-runs/

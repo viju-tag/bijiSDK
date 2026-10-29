@@ -1,6 +1,10 @@
 # Implementation status
 
-## Delivered: 0.1.0-preview.3, 2026-10-29
+## Delivered: 0.1.0-preview.4, 2026-10-29
+
+The preview.4 release records the Android validation and adds repeatable test tooling.
+Runtime/sample source is unchanged from the tested preview.3 APK; historical reports
+retain the actual tested version. iOS testing is deferred by the user.
 
 The Unity client supports typed defaults, strict JSON/envelope and feature validation,
 immutable snapshots, local staging, explicit async activation, per-key sources, and
@@ -49,14 +53,34 @@ See ../verification/README.md and ../verification/results-http-2026-10-29.md for
 and the exact tested scope. Core, transport, local server, and Unity integration checks
 are separate from mobile player validation.
 
-The final Unity 6000.0.68f1 Editor run passed the 31 core/HTTP groups, main-thread
+The current Unity 6000.0.68f1 Editor run passed 35 core/HTTP/Pages groups, main-thread
 and persistence integration, live publication/ETag/activation/rollback/offline restart,
-and six transport fault checks. Android/iOS and IL2CPP remain unverified.
+and seven controlled transport cases. A clean project also passed 15 live Pages and
+storage checks in Editor and in an ARM64 IL2CPP development player on a Nox Android 12
+emulator. Manual activation, background/resume, force-stop/relaunch, and approved hosted
+update/rollback passed there. See [emulator results](../verification/results-mobile-2026-10-29.md).
+
+The same APK also passed all 15 checks on a physical Motorola moto g45 5G running
+Android 15 / API 35 with native ARM64 execution. The build uses IL2CPP, Low managed
+stripping, minimum API 23, and target API 35. Manual sample/probe refresh kept 80/180
+active until explicit activation changed it to 100/120. Repeated refresh,
+background/resume, and force-stop/relaunch with saved values passed. The automatic
+suite also verified local update/rollback and durable file replacement on the phone.
+A separately approved hosted update/rollback sequence passed in the imported sample:
+the 125/120 update stayed pending while 100/120 remained active; after activation,
+the 100/120 rollback stayed pending while 125/120 remained active. Explicit rollback
+activation restored 100/120, which survived another process restart. The lifecycle
+probe retained its prior active rollback and was not used for these new hosted revisions.
+See [physical Android results](../verification/results-physical-android-2026-10-29.md).
+Real network-loss/reconnection testing was skipped by the user. iOS execution remains
+unverified.
 
 ## Remaining work
 
 - Choose production hosting, publishing access controls, and operational ownership.
-- Build/run Android and iOS; verify IL2CPP, stripping, transport policy, and device storage.
+- Expand physical Android coverage to other devices/OS versions, higher stripping,
+  controlled transport failures, and background/resume during an active refresh.
+- Complete real network-loss/reconnection checks when requested, and build/run on iOS.
 - Add an Editor inspector and validated debug overrides.
 - Confirm license/ownership before external distribution.
 
@@ -68,8 +92,10 @@ JSON responses are limited to 1 MiB by default and depth 64. The core rejects no
 numbers and integers outside the exact interoperable JSON integer range.
 
 One writer owns each cache directory. Cross-process and competing-client writes are
-unsupported. File replacement is verified on Windows; unsupported safe replacement
-fails while preserving existing committed data.
+unsupported. File replacement is verified on Windows, in the tested Android emulator,
+and on the Motorola moto g45 5G with Android 15. Unsupported safe replacement fails
+while preserving existing committed data.
 
 The local server is a development tool. It is not a production hosting/security model.
-Editor/.NET results do not establish Android/iOS or IL2CPP compatibility.
+Physical Android results cover the recorded device/build settings. Other Android
+configurations and iOS still require their own runtime checks.

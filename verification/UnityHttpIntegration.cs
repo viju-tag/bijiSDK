@@ -109,6 +109,24 @@ namespace BijiSDK.OfflineChecks
                 TimeSpan.FromSeconds(2), 1024), CancellationToken.None);
             Equal(429, throttled.StatusCode);
             Equal("120", throttled.RetryAfter);
+
+            var malformed = await transport.GetAsync(new ConfigHttpRequest(new Uri(url + "malformed"), null,
+                TimeSpan.FromSeconds(2), 1024), CancellationToken.None);
+            Equal(200, malformed.StatusCode);
+            string dataRoot = Environment.GetEnvironmentVariable("BIJI_HTTP_TEST_DATA");
+            var storage = new RecoverableFileConfigStorage(Path.Combine(dataRoot, "malformed-cache"));
+            using (var client = new ConfigClient(Options(), Definitions(), storage, new UnityMainThreadDispatcher()))
+            {
+                Equal(ConfigOutcome.ReadyWithDefaults, (await client.InitializeAsync()).Outcome);
+                var result = await client.StageJsonAsync(malformed.Body);
+                Equal(ConfigOutcome.Failed, result.Outcome);
+                True(result.Error != null, "Malformed JSON must include a protocol error.");
+                Equal(ConfigErrorCategory.Protocol, result.Error.Category);
+                Equal(80, client.Get<Energy>("energy").Maximum);
+                Equal(180, client.Get<Energy>("energy").RefillSeconds);
+                True(client.GetStatus().ActiveRevision == null, "Malformed JSON changed active state.");
+                True(client.GetStatus().PendingRevision == null, "Malformed JSON created pending state.");
+            }
         }
 
         private static Task PublishAsync(string python, string dataRoot, params string[] arguments)
